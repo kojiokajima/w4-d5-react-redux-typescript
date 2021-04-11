@@ -1,6 +1,6 @@
 import axios from "axios";
-import {Dispatch} from  "redux";
-import {ActionType} from './types'
+import { Dispatch } from "redux";
+import { ActionTypes } from "./types";
 
 interface Todo {
   id: number;
@@ -12,9 +12,10 @@ const url = "https://jsonplaceholder.typicode.com/todos";
 export const fetch = () => {
   // dispatch comes from redux automatically
   return async (dispatch: Dispatch) => {
+    // Dispatchはreduxから提供されてるinterface
     const response = await axios.get<Todo[]>(url);
     dispatch({
-      type: ActionType.fetchTodos,
+      type: ActionTypes.fetchTodos,
       patload: response.data,
     });
   };

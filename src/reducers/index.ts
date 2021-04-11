@@ -1,8 +1,7 @@
 import {bindActionCreators, combineReducers} from 'redux'
-import {FETCH_TODOS} from '../actions/types'
+// import {ActionTypes} from '../actions/types'
+import {todosReducer} from './todos'
 
 export const reducers = combineReducers({
-  counter: () => 1
-
-  case: bindActionCreators.type === FETCH_TODO
+  todos: todosReducer
 })
