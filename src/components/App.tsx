@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import  {Todo, fetchTodos, clearTodos} from '../actions'
+import  {Todo, fetchTodos, clearTodos, deleteTodo} from '../actions'
 import {StoreState} from '../reducers'
 
 interface AppProps {
   todos: Todo[];
   fetchTodos: Function; // (Function is?) only for Action creaters
   clearTodos: Function;
+  deleteTodo: Function;
 }
 
 interface AppState {
@@ -33,10 +34,17 @@ class _App extends Component<AppProps, AppState> {
     this.setState({fetching: true})
   }
 
+  onItemClick = (index: number): void => {
+    console.log("ONITEMCLICK!!!");
+    
+    // const todoArr = this.props.fetchTodos()
+    this.props.deleteTodo(index)
+  }
+
   renderList(): JSX.Element[] {
     return this.props.todos.map((todo: Todo) => {
       return (
-        <div key={todo.id}>
+        <div key={todo.id} onClick={() => this.onItemClick(todo.id)}>
           {todo.title}
         </div>
       )
@@ -59,4 +67,4 @@ const mapStateToProps = ({todos}: StoreState): {todos: Todo[]} => {
 }
 
 
-export const App = connect(mapStateToProps, {fetchTodos, clearTodos})(_App)
+export const App = connect(mapStateToProps, {fetchTodos, clearTodos, deleteTodo})(_App)
