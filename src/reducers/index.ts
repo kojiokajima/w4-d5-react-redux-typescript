@@ -1,7 +1,11 @@
-import {bindActionCreators, combineReducers} from 'redux'
-// import {ActionTypes} from '../actions/types'
+import { combineReducers} from 'redux'
 import {todosReducer} from './todos'
+import {Todo} from '../actions'
 
-export const reducers = combineReducers({
+export interface StoreState {
+  todos: Todo[]
+}
+
+export const reducers = combineReducers<StoreState>({
   todos: todosReducer
 })

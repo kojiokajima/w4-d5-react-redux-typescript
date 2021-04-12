@@ -1,20 +1,11 @@
-import {ActionTypes} from '../actions/types'
+import {ActionTypes, Todo, Action} from '../actions'
 
-interface Todo {
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
-interface TodosAction {
-  type: ActionTypes.fetchTodos;
-  payload: Todo[]
-}
-
-export const todosReducer = (state = [], action: TodosAction) => {
+export const todosReducer = (state: Todo[] = [], action: Action) => {
   switch(action.type) {
     case ActionTypes.fetchTodos:
       return action.payload
+    case ActionTypes.clearTodos:
+      return []
 
     default:
       return state
