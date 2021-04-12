@@ -34,8 +34,8 @@ class _App extends Component<AppProps, AppState> {
     this.setState({fetching: true})
   }
 
-  onItemClick = (index: number): void => {
-    this.props.deleteTodo(index)
+  onItemClick = (id: number): void => {
+    this.props.deleteTodo(id)
   }
 
   renderList(): JSX.Element[] {
