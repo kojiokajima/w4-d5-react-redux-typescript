@@ -35,9 +35,6 @@ class _App extends Component<AppProps, AppState> {
   }
 
   onItemClick = (index: number): void => {
-    console.log("ONITEMCLICK!!!");
-    
-    // const todoArr = this.props.fetchTodos()
     this.props.deleteTodo(index)
   }
 
