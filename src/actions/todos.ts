@@ -43,11 +43,11 @@ export const clearTodos = () => {
   }
 }
 
-export const deleteTodo = (index: number, todoArr: Array<object>) => {
+export const deleteTodo = (id: number) => {
   return (dispatch: Dispatch) => {
     dispatch<DeleteTodoAction>({
       type: ActionTypes.deleteTodo,
-      payload: index
+      payload: id
     })
   }
 }
